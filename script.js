@@ -1,3 +1,4 @@
+//random image generator
 const imgCont = document.querySelector('.container');
 const button = document.querySelector('.btn');
 
@@ -20,3 +21,21 @@ button.addEventListener('mouseover', (event)=>{
     button.style.setProperty('--xPos', x + 'px');
     button.style.setProperty('--yPos', y + 'px');
 });
+
+//dark and light mode
+const body = document.querySelector('body');
+const mode = document.getElementById('dark-mode');
+const savedMode = JSON.parse(localStorage.getItem('mode'));
+mode.checked = savedMode;
+//console.log(mode.checked);
+changeMode();
+mode.addEventListener('input', changeMode);
+
+function changeMode(){
+    if(mode.checked){
+        body.style.backgroundColor = 'black';
+    } else{
+        body.style.backgroundColor = 'whitesmoke';
+    }
+    localStorage.setItem('mode', JSON.stringify(mode.checked));
+}
